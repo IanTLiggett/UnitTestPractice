@@ -20,3 +20,9 @@ TEST(PasswordTest, single_letter_password)
 	int actual = my_password.count_leading_characters("Z");
 	ASSERT_EQ(1, actual);
 }
+TEST(PasswordTest, long_repeating_letter_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("EEEEEAWEWE@(*#@#@FB)");
+	ASSERT_EQ(5, actual);
+}
