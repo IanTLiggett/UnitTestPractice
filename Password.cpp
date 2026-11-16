@@ -1,5 +1,6 @@
 #include "Password.h"
 #include <string>
+#include <cctype>
 
 using std::string;
 
@@ -10,6 +11,10 @@ using std::string;
   'z' and any ASCII characters are allowed.
 */
 int Password::count_leading_characters(string phrase){
+  if (phrase.length() == 0) {
+    return 0;
+  }
+
   int repetition = 1;
   int index = 0;
   while( index < phrase.length()-1 && phrase[index] == phrase[index+1] ){
@@ -24,5 +29,19 @@ int Password::count_leading_characters(string phrase){
   letter and at least one lower-case letter
 */
 bool Password::has_mixed_case(string pass){
+  bool hasLower = false;
+  bool hasUpper = false;
+  for (int index = 0; index < pass.length() - 1; index++) {
+    if (std::islower(static_cast<unsigned char>(pass[index]))) {
+      hasLower == true;
+    } else {
+      hasUpper = true;
+    }
+
+    if (hasLower && hasUpper) {
+      return true;
+    }
+  }
+
   return false;
 }
