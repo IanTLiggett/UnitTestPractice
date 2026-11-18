@@ -31,10 +31,10 @@ int Password::count_leading_characters(string phrase){
 bool Password::has_mixed_case(string pass){
   bool hasLower = false;
   bool hasUpper = false;
-  for (int index = 0; index < pass.length() - 1; index++) {
+  for (int index = 0; index < pass.length(); index++) {
     if (std::islower(static_cast<unsigned char>(pass[index]))) {
-      hasLower == true;
-    } else {
+      hasLower = true;
+    } else if (std::isupper(static_cast<unsigned char>(pass[index]))) {
       hasUpper = true;
     }
 
